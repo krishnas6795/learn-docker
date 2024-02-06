@@ -11,12 +11,15 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the requirements file into the container at /app
+COPY requirements.txt /app/requirements.txt
 
 # Install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . /app
 
 # Expose port 8000 to allow communication to/from server
 EXPOSE 8000
